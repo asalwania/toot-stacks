@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { tools, type Tool } from "@/lib/tools-registry";
+import { tools as allTools, type Tool } from "@/lib/tools-registry";
 import AdSlot from "@/components/layout/AdSlot";
 
 interface ToolLayoutProps {
@@ -21,11 +21,12 @@ const colorMap: Record<string, { bg: string; text: string }> = {
 };
 
 function getRelatedTools(tool: Tool, count = 3): Tool[] {
-  const sameCategory = tools.filter(
+  const registry = allTools ?? [];
+  const sameCategory = registry.filter(
     (t) => t.category === tool.category && t.id !== tool.id
   );
   if (sameCategory.length >= count) return sameCategory.slice(0, count);
-  const others = tools.filter(
+  const others = registry.filter(
     (t) => t.id !== tool.id && t.category !== tool.category
   );
   return [...sameCategory, ...others].slice(0, count);
@@ -139,35 +140,37 @@ export default function ToolLayout({ tool, children }: ToolLayoutProps) {
       </div>
 
       {/* ---- Related Tools ---- */}
-      <section className="mt-14 border-t border-white/5 pt-10">
-        <h2 className="mb-5 text-lg font-semibold text-white">
-          Related Tools
-        </h2>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {related.map((r) => {
-            const rc = colorMap[r.color] ?? colorMap.blue;
-            return (
-              <Link
-                key={r.id}
-                href={`/tools/${r.slug}`}
-                className="group rounded-2xl border border-white/5 bg-white/2 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-white/10 hover:bg-white/4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-              >
-                <div
-                  className={`mb-3 flex h-10 w-10 items-center justify-center rounded-xl text-lg ${rc.bg}`}
+      {related.length > 0 && (
+        <section className="mt-14 border-t border-white/5 pt-10">
+          <h2 className="mb-5 text-lg font-semibold text-white">
+            Related Tools
+          </h2>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {related.map((r) => {
+              const rc = colorMap[r.color] ?? colorMap.blue;
+              return (
+                <Link
+                  key={r.id}
+                  href={`/tools/${r.slug}`}
+                  className="group rounded-2xl border border-white/5 bg-white/2 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-white/10 hover:bg-white/4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
                 >
-                  {r.icon}
-                </div>
-                <h3 className="font-semibold text-white transition-colors duration-200 group-hover:text-primary-400">
-                  {r.shortName}
-                </h3>
-                <p className="mt-1 line-clamp-2 text-sm text-gray-500">
-                  {r.description}
-                </p>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
+                  <div
+                    className={`mb-3 flex h-10 w-10 items-center justify-center rounded-xl text-lg ${rc.bg}`}
+                  >
+                    {r.icon}
+                  </div>
+                  <h3 className="font-semibold text-white transition-colors duration-200 group-hover:text-primary-400">
+                    {r.shortName}
+                  </h3>
+                  <p className="mt-1 line-clamp-2 text-sm text-gray-500">
+                    {r.description}
+                  </p>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {/* ---- SEO content ---- */}
       <section className="mt-14 border-t border-white/5 pt-10">
