@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Tips, tutorials, and updates from the DevToolkit team. Learn how to make the most of our developer tools.",
+    "Tips, tutorials, and updates from the WebToolkit team. Learn how to make the most of our developer tools.",
 };
 
 const upcomingArticles = [
@@ -40,7 +40,7 @@ export default function BlogPage() {
             Blog
           </h1>
           <p className="text-lg text-muted-foreground">
-            Tips, tutorials, and updates from the DevToolkit team.
+            Tips, tutorials, and updates from the WebToolkit team.
           </p>
         </div>
 

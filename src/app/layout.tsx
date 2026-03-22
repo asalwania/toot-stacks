@@ -23,8 +23,8 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    template: `%s | ${SITE_NAME} - Free Developer Tools`,
-    default: `${SITE_NAME} - Free Online Developer Tools`,
+    template: `%s | ${SITE_NAME} - Free Web Tools`,
+    default: `${SITE_NAME} - Free Online Web Tools`,
   },
   description: SITE_DESCRIPTION,
   openGraph: {
@@ -32,12 +32,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} - Free Online Developer Tools`,
+    title: `${SITE_NAME} - Free Online Web Tools`,
     description: SITE_DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} - Free Online Developer Tools`,
+    title: `${SITE_NAME} - Free Online Web Tools`,
     description: SITE_DESCRIPTION,
   },
   robots: {
@@ -92,7 +92,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen font-sans antialiased" style={{ backgroundColor: 'var(--th-bg)', color: 'var(--th-fg)' }}>
+      <body
+        className="min-h-screen font-sans antialiased"
+        style={{ backgroundColor: "var(--th-bg)", color: "var(--th-fg)" }}
+      >
         <div className="relative flex min-h-screen flex-col">
           <Header />
           <main className="flex-1">{children}</main>

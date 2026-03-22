@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "DevToolkit",
-    short_name: "DevToolkit",
+    name: "WebToolkit",
+    short_name: "WebToolkit",
     description:
       "A collection of free, fast, and privacy-friendly developer tools. JSON formatter, image compressor, password generator, and more.",
     start_url: "/",

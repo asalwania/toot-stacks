@@ -1,10 +1,10 @@
-import type { Metadata } from 'next';
-import type { Tool } from './tools-registry';
+import type { Metadata } from "next";
+import type { Tool } from "./tools-registry";
 
-export const SITE_URL = 'https://devtoolkit.dev';
-export const SITE_NAME = 'DevToolkit';
+export const SITE_URL = "https://devtoolkit.dev";
+export const SITE_NAME = "WebToolkit";
 export const SITE_DESCRIPTION =
-  'A collection of fast, free, and privacy-friendly developer tools that run entirely in your browser. Format JSON, compress images, generate passwords, build regex, and more — no sign-up required.';
+  "A collection of fast, free, and privacy-friendly developer tools that run entirely in your browser. Format JSON, compress images, generate passwords, build regex, and more — no sign-up required.";
 
 export function generateToolMetadata(tool: Tool): Metadata {
   const title = `${tool.name} — Free Online Tool | ${SITE_NAME}`;
@@ -20,8 +20,8 @@ export function generateToolMetadata(tool: Tool): Metadata {
       description,
       url,
       siteName: SITE_NAME,
-      type: 'website',
-      locale: 'en_US',
+      type: "website",
+      locale: "en_US",
       images: [
         {
           url: `${SITE_URL}/og/${tool.slug}.png`,
@@ -32,7 +32,7 @@ export function generateToolMetadata(tool: Tool): Metadata {
       ],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title,
       description,
       images: [`${SITE_URL}/og/${tool.slug}.png`],
@@ -43,8 +43,8 @@ export function generateToolMetadata(tool: Tool): Metadata {
     robots: {
       index: true,
       follow: true,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   };
 }

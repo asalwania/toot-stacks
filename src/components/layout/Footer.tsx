@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer
       className="border-t border-(--th-border)"
-      style={{ backgroundColor: 'var(--th-footer-bg)' }}
+      style={{ backgroundColor: "var(--th-footer-bg)" }}
     >
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
@@ -19,7 +19,7 @@ export default function Footer() {
                 &lt;/&gt;
               </span>
               <span className="text-lg font-bold tracking-tight text-(--th-fg-heading)">
-                DevToolkit
+                WebToolkit
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-(--th-fg-muted)">
@@ -29,7 +29,9 @@ export default function Footer() {
 
           {/* ---- Col 2: Tools ---- */}
           <div>
-            <h3 className="text-sm font-semibold text-(--th-fg-heading)">Tools</h3>
+            <h3 className="text-sm font-semibold text-(--th-fg-heading)">
+              Tools
+            </h3>
             <ul className="mt-4 space-y-2.5">
               {tools.map((tool) => (
                 <li key={tool.id}>
@@ -47,7 +49,9 @@ export default function Footer() {
 
           {/* ---- Col 3: Resources ---- */}
           <div>
-            <h3 className="text-sm font-semibold text-(--th-fg-heading)">Resources</h3>
+            <h3 className="text-sm font-semibold text-(--th-fg-heading)">
+              Resources
+            </h3>
             <ul className="mt-4 space-y-2.5">
               <li>
                 <Link
@@ -104,7 +108,7 @@ export default function Footer() {
         {/* ---- Bottom bar ---- */}
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-(--th-border) pt-8 sm:flex-row">
           <p className="text-xs text-(--th-fg-faint)">
-            &copy; 2026 DevToolkit. All tools process data locally in your
+            &copy; 2026 WebToolkit. All tools process data locally in your
             browser.
           </p>
           <p className="text-xs text-(--th-fg-faint)">

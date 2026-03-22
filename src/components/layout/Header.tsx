@@ -66,7 +66,13 @@ export default function Header() {
   }, [mobileOpen]);
 
   return (
-    <header className="sticky top-0 z-50 w-full backdrop-blur-xl" style={{ borderBottom: '1px solid var(--th-border)', backgroundColor: 'var(--th-header-bg)' }}>
+    <header
+      className="sticky top-0 z-50 w-full backdrop-blur-xl"
+      style={{
+        borderBottom: "1px solid var(--th-border)",
+        backgroundColor: "var(--th-header-bg)",
+      }}
+    >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* ---- Left: Logo ---- */}
         <Link
@@ -76,8 +82,11 @@ export default function Header() {
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-linear-to-br from-primary-500 to-accent-500 font-mono text-xs font-bold text-white transition-shadow duration-200 group-hover:shadow-lg group-hover:shadow-primary-500/25">
             &lt;/&gt;
           </span>
-          <span className="text-lg font-bold tracking-tight" style={{ color: 'var(--th-fg-heading)' }}>
-            DevToolkit
+          <span
+            className="text-lg font-bold tracking-tight"
+            style={{ color: "var(--th-fg-heading)" }}
+          >
+            WebToolkit
           </span>
           <span className="rounded bg-emerald-500/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase leading-none tracking-wider text-emerald-400">
             Free
@@ -91,9 +100,13 @@ export default function Header() {
             <button
               onClick={() => setToolsOpen((o) => !o)}
               className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-(--th-pill-bg) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-              style={{ color: 'var(--th-header-fg)' }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--th-fg-heading)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--th-header-fg)')}
+              style={{ color: "var(--th-header-fg)" }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color = "var(--th-fg-heading)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = "var(--th-header-fg)")
+              }
             >
               Tools
               <svg
@@ -112,22 +125,35 @@ export default function Header() {
             </button>
 
             {toolsOpen && (
-              <div className="absolute left-1/2 top-full mt-2 w-80 -translate-x-1/2 animate-slide-down rounded-xl border p-2 shadow-2xl" style={{ borderColor: 'var(--th-border-hover)', backgroundColor: 'var(--th-popover-bg)' }}>
+              <div
+                className="absolute left-1/2 top-full mt-2 w-80 -translate-x-1/2 animate-slide-down rounded-xl border p-2 shadow-2xl"
+                style={{
+                  borderColor: "var(--th-border-hover)",
+                  backgroundColor: "var(--th-popover-bg)",
+                }}
+              >
                 <div className="max-h-[70vh] overflow-y-auto">
                   {tools.map((tool) => (
                     <Link
                       key={tool.id}
                       href={`/tools/${tool.slug}`}
                       className="group/item flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors duration-200 hover:bg-(--th-pill-bg) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-                      style={{ color: 'var(--th-header-fg)' }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--th-fg-heading)')}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--th-header-fg)')}
+                      style={{ color: "var(--th-header-fg)" }}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.color = "var(--th-fg-heading)")
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.color = "var(--th-header-fg)")
+                      }
                     >
                       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-(--th-pill-bg) text-base">
                         {tool.icon}
                       </span>
                       <div className="min-w-0">
-                        <div className="flex items-center gap-1.5 font-medium" style={{ color: 'var(--th-fg-heading)' }}>
+                        <div
+                          className="flex items-center gap-1.5 font-medium"
+                          style={{ color: "var(--th-fg-heading)" }}
+                        >
                           {tool.shortName}
                           {tool.isNew && (
                             <span className="rounded bg-primary-500/15 px-1.5 py-0.5 text-[10px] font-semibold leading-none text-primary-400">
@@ -135,14 +161,20 @@ export default function Header() {
                             </span>
                           )}
                         </div>
-                        <p className="truncate text-xs" style={{ color: 'var(--th-fg-muted)' }}>
+                        <p
+                          className="truncate text-xs"
+                          style={{ color: "var(--th-fg-muted)" }}
+                        >
                           {tool.description}
                         </p>
                       </div>
                     </Link>
                   ))}
                 </div>
-                <div className="mt-1 border-t pt-1" style={{ borderColor: 'var(--th-border)' }}>
+                <div
+                  className="mt-1 border-t pt-1"
+                  style={{ borderColor: "var(--th-border)" }}
+                >
                   <Link
                     href="/#tools"
                     className="flex items-center justify-center rounded-lg px-3 py-2 text-sm font-medium text-primary-400 transition-colors duration-200 hover:bg-primary-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
@@ -157,9 +189,13 @@ export default function Header() {
           <Link
             href="/blog"
             className="rounded-lg px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-(--th-pill-bg) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-            style={{ color: 'var(--th-header-fg)' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--th-fg-heading)')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--th-header-fg)')}
+            style={{ color: "var(--th-header-fg)" }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.color = "var(--th-fg-heading)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.color = "var(--th-header-fg)")
+            }
           >
             Blog
           </Link>
@@ -174,9 +210,13 @@ export default function Header() {
             rel="noopener noreferrer"
             aria-label="GitHub"
             className="flex h-9 w-9 items-center justify-center rounded-lg transition-colors duration-200 hover:bg-(--th-pill-bg) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-            style={{ color: 'var(--th-fg-muted)' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--th-fg-heading)')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--th-fg-muted)')}
+            style={{ color: "var(--th-fg-muted)" }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.color = "var(--th-fg-heading)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.color = "var(--th-fg-muted)")
+            }
           >
             <svg
               className="h-5 w-5"
@@ -195,11 +235,17 @@ export default function Header() {
           {/* Theme toggle */}
           <button
             onClick={toggleTheme}
-            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+            aria-label={
+              darkMode ? "Switch to light mode" : "Switch to dark mode"
+            }
             className="flex h-9 w-9 items-center justify-center rounded-lg transition-colors duration-200 hover:bg-(--th-pill-bg) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-            style={{ color: 'var(--th-fg-muted)' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--th-fg-heading)')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--th-fg-muted)')}
+            style={{ color: "var(--th-fg-muted)" }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.color = "var(--th-fg-heading)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.color = "var(--th-fg-muted)")
+            }
           >
             {darkMode ? (
               <svg
@@ -237,9 +283,13 @@ export default function Header() {
             onClick={() => setMobileOpen((o) => !o)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             className="flex h-9 w-9 items-center justify-center rounded-lg transition-colors duration-200 hover:bg-(--th-pill-bg) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 md:hidden"
-            style={{ color: 'var(--th-fg-muted)' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--th-fg-heading)')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--th-fg-muted)')}
+            style={{ color: "var(--th-fg-muted)" }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.color = "var(--th-fg-heading)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.color = "var(--th-fg-muted)")
+            }
           >
             {mobileOpen ? (
               <svg
@@ -292,18 +342,33 @@ export default function Header() {
         className={`fixed right-0 top-0 z-50 flex h-full w-72 flex-col transition-transform duration-200 ease-out md:hidden ${
           mobileOpen ? "translate-x-0" : "translate-x-full"
         }`}
-        style={{ borderLeft: '1px solid var(--th-border)', backgroundColor: 'var(--th-surface)' }}
+        style={{
+          borderLeft: "1px solid var(--th-border)",
+          backgroundColor: "var(--th-surface)",
+        }}
       >
         {/* Mobile header */}
-        <div className="flex h-16 items-center justify-between px-4" style={{ borderBottom: '1px solid var(--th-border)' }}>
-          <span className="text-sm font-semibold" style={{ color: 'var(--th-fg-heading)' }}>Menu</span>
+        <div
+          className="flex h-16 items-center justify-between px-4"
+          style={{ borderBottom: "1px solid var(--th-border)" }}
+        >
+          <span
+            className="text-sm font-semibold"
+            style={{ color: "var(--th-fg-heading)" }}
+          >
+            Menu
+          </span>
           <button
             onClick={() => setMobileOpen(false)}
             aria-label="Close menu"
             className="flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-200 hover:bg-(--th-pill-bg) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-            style={{ color: 'var(--th-fg-muted)' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--th-fg-heading)')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--th-fg-muted)')}
+            style={{ color: "var(--th-fg-muted)" }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.color = "var(--th-fg-heading)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.color = "var(--th-fg-muted)")
+            }
           >
             <svg
               className="h-5 w-5"
@@ -326,25 +391,39 @@ export default function Header() {
           <Link
             href="/#tools"
             className="flex items-center rounded-lg px-3 py-2.5 text-sm font-medium transition-colors duration-200 hover:bg-(--th-pill-bg) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-            style={{ color: 'var(--th-header-fg)' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--th-fg-heading)')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--th-header-fg)')}
+            style={{ color: "var(--th-header-fg)" }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.color = "var(--th-fg-heading)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.color = "var(--th-header-fg)")
+            }
           >
             All Tools
           </Link>
           <Link
             href="/blog"
             className="flex items-center rounded-lg px-3 py-2.5 text-sm font-medium transition-colors duration-200 hover:bg-(--th-pill-bg) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-            style={{ color: 'var(--th-header-fg)' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--th-fg-heading)')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--th-header-fg)')}
+            style={{ color: "var(--th-header-fg)" }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.color = "var(--th-fg-heading)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.color = "var(--th-header-fg)")
+            }
           >
             Blog
           </Link>
 
-          <div className="my-3 border-t" style={{ borderColor: 'var(--th-border)' }} />
+          <div
+            className="my-3 border-t"
+            style={{ borderColor: "var(--th-border)" }}
+          />
 
-          <p className="px-3 pb-2 text-[11px] font-semibold uppercase tracking-wider" style={{ color: 'var(--th-fg-muted)' }}>
+          <p
+            className="px-3 pb-2 text-[11px] font-semibold uppercase tracking-wider"
+            style={{ color: "var(--th-fg-muted)" }}
+          >
             Tools
           </p>
 
@@ -353,9 +432,13 @@ export default function Header() {
               key={tool.id}
               href={`/tools/${tool.slug}`}
               className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors duration-200 hover:bg-(--th-pill-bg) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-              style={{ color: 'var(--th-fg-muted)' }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--th-fg-heading)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--th-fg-muted)')}
+              style={{ color: "var(--th-fg-muted)" }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color = "var(--th-fg-heading)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = "var(--th-fg-muted)")
+              }
             >
               <span className="text-base">{tool.icon}</span>
               <span>{tool.shortName}</span>
@@ -369,15 +452,22 @@ export default function Header() {
         </div>
 
         {/* Mobile footer */}
-        <div className="px-4 py-3" style={{ borderTop: '1px solid var(--th-border)' }}>
+        <div
+          className="px-4 py-3"
+          style={{ borderTop: "1px solid var(--th-border)" }}
+        >
           <a
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors duration-200 hover:bg-(--th-pill-bg) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-            style={{ color: 'var(--th-fg-muted)' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--th-fg-heading)')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--th-fg-muted)')}
+            style={{ color: "var(--th-fg-muted)" }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.color = "var(--th-fg-heading)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.color = "var(--th-fg-muted)")
+            }
           >
             <svg
               className="h-4 w-4"
