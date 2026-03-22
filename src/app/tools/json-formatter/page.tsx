@@ -12,7 +12,7 @@ export function generateMetadata(): Metadata {
 
 export default function JsonFormatterPage() {
   return (
-    <ToolLayout title={tool.name} description={tool.description}>
+    <ToolLayout tool={tool}>
       <JsonFormatter />
     </ToolLayout>
   );

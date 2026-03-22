@@ -12,7 +12,7 @@ export function generateMetadata(): Metadata {
 
 export default function CronBuilderPage() {
   return (
-    <ToolLayout title={tool.name} description={tool.description}>
+    <ToolLayout tool={tool}>
       <CronBuilder />
     </ToolLayout>
   );

@@ -2,51 +2,47 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 
-interface TabObject {
+interface Tab {
   id: string;
   label: string;
 }
 
-type TabInput = TabObject | string;
+type TabInput = Tab | string;
 
 interface TabSwitcherProps {
   tabs: TabInput[];
   activeTab: string;
-  onTabChange?: (tabId: string) => void;
-  onChange?: (tabId: string) => void;
+  onChange?: (id: string) => void;
+  onTabChange?: (id: string) => void;
+  className?: string;
 }
 
-function normalizeTab(tab: TabInput): TabObject {
-  if (typeof tab === "string") {
-    return { id: tab, label: tab };
-  }
-  return tab;
+function normalize(t: TabInput): Tab {
+  return typeof t === "string" ? { id: t, label: t } : t;
 }
-
-export { TabSwitcher };
 
 export default function TabSwitcher({
   tabs: rawTabs,
   activeTab,
-  onTabChange,
   onChange,
+  onTabChange,
+  className = "",
 }: TabSwitcherProps) {
-  const tabs = rawTabs.map(normalizeTab);
-  const handleChange = onTabChange ?? onChange ?? (() => {});
-
+  const tabs = rawTabs.map(normalize);
+  const handleChange = onChange ?? onTabChange ?? (() => {});
   const containerRef = useRef<HTMLDivElement>(null);
   const tabRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
   const [indicator, setIndicator] = useState({ left: 0, width: 0 });
 
   const updateIndicator = useCallback(() => {
-    const activeEl = tabRefs.current.get(activeTab);
+    const el = tabRefs.current.get(activeTab);
     const container = containerRef.current;
-    if (activeEl && container) {
-      const containerRect = container.getBoundingClientRect();
-      const tabRect = activeEl.getBoundingClientRect();
+    if (el && container) {
+      const cr = container.getBoundingClientRect();
+      const tr = el.getBoundingClientRect();
       setIndicator({
-        left: tabRect.left - containerRect.left + container.scrollLeft,
-        width: tabRect.width,
+        left: tr.left - cr.left + container.scrollLeft,
+        width: tr.width,
       });
     }
   }, [activeTab]);
@@ -57,41 +53,40 @@ export default function TabSwitcher({
     return () => window.removeEventListener("resize", updateIndicator);
   }, [updateIndicator]);
 
-  function handleKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
-    const currentIndex = tabs.findIndex((t) => t.id === activeTab);
-    let nextIndex = currentIndex;
+  function onKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
+    const idx = tabs.findIndex((t) => t.id === activeTab);
+    let next = idx;
 
     if (e.key === "ArrowRight") {
       e.preventDefault();
-      nextIndex = (currentIndex + 1) % tabs.length;
+      next = (idx + 1) % tabs.length;
     } else if (e.key === "ArrowLeft") {
       e.preventDefault();
-      nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+      next = (idx - 1 + tabs.length) % tabs.length;
     } else if (e.key === "Home") {
       e.preventDefault();
-      nextIndex = 0;
+      next = 0;
     } else if (e.key === "End") {
       e.preventDefault();
-      nextIndex = tabs.length - 1;
+      next = tabs.length - 1;
     } else {
       return;
     }
 
-    const nextTab = tabs[nextIndex];
-    handleChange(nextTab.id);
-    tabRefs.current.get(nextTab.id)?.focus();
+    handleChange(tabs[next].id);
+    tabRefs.current.get(tabs[next].id)?.focus();
   }
 
   return (
     <div
       ref={containerRef}
       role="tablist"
-      onKeyDown={handleKeyDown}
-      className="relative flex overflow-x-auto rounded-lg border border-zinc-200 bg-zinc-100 p-1 dark:border-zinc-700 dark:bg-zinc-800"
+      onKeyDown={onKeyDown}
+      className={`relative inline-flex overflow-x-auto rounded-xl border border-white/10 bg-white/5 p-1 ${className}`}
     >
-      {/* Animated indicator */}
+      {/* Sliding active indicator */}
       <div
-        className="absolute top-1 h-[calc(100%-8px)] rounded-md bg-white shadow-sm transition-all duration-200 ease-out dark:bg-zinc-700"
+        className="absolute top-1 h-[calc(100%-8px)] rounded-lg bg-white/10 transition-all duration-200 ease-out"
         style={{ left: indicator.left, width: indicator.width }}
         aria-hidden="true"
       />
@@ -108,10 +103,10 @@ export default function TabSwitcher({
           aria-controls={`panel-${tab.id}`}
           tabIndex={activeTab === tab.id ? 0 : -1}
           onClick={() => handleChange(tab.id)}
-          className={`relative z-10 shrink-0 rounded-md px-3.5 py-1.5 text-sm font-medium transition-colors ${
+          className={`relative z-10 shrink-0 rounded-lg px-4 py-2 text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 ${
             activeTab === tab.id
-              ? "text-zinc-900 dark:text-white"
-              : "text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300"
+              ? "text-white"
+              : "text-gray-500 hover:text-gray-300"
           }`}
         >
           {tab.label}
@@ -120,3 +115,6 @@ export default function TabSwitcher({
     </div>
   );
 }
+
+export { TabSwitcher };
+export type { TabSwitcherProps, Tab };

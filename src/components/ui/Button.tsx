@@ -1,6 +1,6 @@
-import { type ButtonHTMLAttributes, type ReactNode } from "react";
+import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from "react";
 
-type Variant = "primary" | "secondary" | "ghost" | "danger";
+type Variant = "primary" | "secondary" | "ghost";
 type Size = "sm" | "md" | "lg";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -12,21 +12,19 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
 }
 
-const variantStyles: Record<Variant, string> = {
+const variantClasses: Record<Variant, string> = {
   primary:
-    "bg-blue-600 text-white shadow-sm hover:bg-blue-700 focus-visible:ring-blue-500 active:bg-blue-800",
+    "bg-primary-600 text-white shadow-lg shadow-primary-600/20 hover:bg-primary-500 focus-visible:ring-primary-500 active:bg-primary-700",
   secondary:
-    "bg-zinc-100 text-zinc-900 shadow-sm hover:bg-zinc-200 focus-visible:ring-zinc-400 active:bg-zinc-300 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700 dark:active:bg-zinc-600",
+    "bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10 hover:text-white focus-visible:ring-primary-500 active:bg-white/15",
   ghost:
-    "text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900 focus-visible:ring-zinc-400 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white",
-  danger:
-    "bg-red-600 text-white shadow-sm hover:bg-red-700 focus-visible:ring-red-500 active:bg-red-800",
+    "text-gray-400 hover:bg-white/5 hover:text-white focus-visible:ring-primary-500 active:bg-white/10",
 };
 
-const sizeStyles: Record<Size, string> = {
-  sm: "h-8 px-3 text-xs gap-1.5 rounded-md",
-  md: "h-10 px-4 text-sm gap-2 rounded-lg",
-  lg: "h-12 px-6 text-base gap-2.5 rounded-lg",
+const sizeClasses: Record<Size, string> = {
+  sm: "h-8 px-3 text-xs gap-1.5 rounded-lg",
+  md: "h-10 px-4 text-sm gap-2 rounded-xl",
+  lg: "h-12 px-6 text-base gap-2.5 rounded-xl",
 };
 
 function Spinner({ className = "" }: { className?: string }) {
@@ -54,25 +52,27 @@ function Spinner({ className = "" }: { className?: string }) {
   );
 }
 
-export { Button };
-
-export default function Button({
-  variant = "primary",
-  size = "md",
-  loading = false,
-  iconLeft,
-  iconRight,
-  disabled,
-  className = "",
-  children,
-  ...props
-}: ButtonProps) {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+  {
+    variant = "primary",
+    size = "md",
+    loading = false,
+    iconLeft,
+    iconRight,
+    disabled,
+    className = "",
+    children,
+    ...props
+  },
+  ref
+) {
   const isDisabled = disabled || loading;
 
   return (
     <button
+      ref={ref}
       disabled={isDisabled}
-      className={`inline-flex items-center justify-center font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900 disabled:pointer-events-none disabled:opacity-50 ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+      className={`inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-900 disabled:pointer-events-none disabled:opacity-40 ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
       {...props}
     >
       {loading ? (
@@ -81,7 +81,13 @@ export default function Button({
         iconLeft && <span className="shrink-0">{iconLeft}</span>
       )}
       {children}
-      {!loading && iconRight && <span className="shrink-0">{iconRight}</span>}
+      {!loading && iconRight && (
+        <span className="shrink-0">{iconRight}</span>
+      )}
     </button>
   );
-}
+});
+
+export default Button;
+export { Button };
+export type { ButtonProps };

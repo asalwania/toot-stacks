@@ -8,36 +8,38 @@ interface CopyButtonProps {
   className?: string;
 }
 
-export { CopyButton };
-
-export default function CopyButton({ text, label, className = "" }: CopyButtonProps) {
+export default function CopyButton({
+  text,
+  label,
+  className = "",
+}: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(text);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
     } catch {
-      const textarea = document.createElement("textarea");
-      textarea.value = text;
-      textarea.style.position = "fixed";
-      textarea.style.opacity = "0";
-      document.body.appendChild(textarea);
-      textarea.select();
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
       document.execCommand("copy");
-      document.body.removeChild(textarea);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      document.body.removeChild(ta);
     }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   }, [text]);
 
   return (
     <button
       onClick={handleCopy}
       aria-label={copied ? "Copied to clipboard" : "Copy to clipboard"}
-      className={`inline-flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-sm font-medium text-zinc-700 shadow-sm transition-all hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 active:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700 dark:focus-visible:ring-offset-zinc-900 dark:active:bg-zinc-600 ${
-        copied ? "border-green-300 text-green-700 dark:border-green-700 dark:text-green-400" : ""
+      className={`inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-3 py-1.5 text-sm font-medium text-gray-300 transition-all duration-200 hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-900 active:bg-white/15 ${
+        copied
+          ? "border-emerald-500/30 text-emerald-400"
+          : ""
       } ${className}`}
     >
       <span
@@ -71,11 +73,20 @@ export default function CopyButton({ text, label, className = "" }: CopyButtonPr
           strokeWidth={2}
           stroke="currentColor"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4.5 12.75l6 6 9-13.5"
+          />
         </svg>
       </span>
 
-      <span className="transition-all duration-200">{copied ? "Copied!" : (label ?? "Copy")}</span>
+      <span className="transition-colors duration-200">
+        {copied ? "Copied!" : (label ?? "Copy")}
+      </span>
     </button>
   );
 }
+
+export { CopyButton };
+export type { CopyButtonProps };

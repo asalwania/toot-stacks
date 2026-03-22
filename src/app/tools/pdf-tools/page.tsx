@@ -12,7 +12,7 @@ export function generateMetadata(): Metadata {
 
 export default function PdfToolsPage() {
   return (
-    <ToolLayout title={tool.name} description={tool.description}>
+    <ToolLayout tool={tool}>
       <PdfTools />
     </ToolLayout>
   );
