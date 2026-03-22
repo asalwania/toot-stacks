@@ -48,94 +48,143 @@
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 @keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0);    }
 }
 
 @keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0);     }
 }
 
 @keyframes pulse-soft {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
+  0%, 100% { opacity: 1;   }
+  50%      { opacity: 0.7; }
 }
 
-/* ------------------------------------------------
-   Theme variables (dark-first, .light override)
-   Using .dark class strategy
-   ------------------------------------------------ */
+/* ================================================
+   Theme: CSS custom properties
+   Dark = default, .light = override
+   ================================================ */
 :root {
-  --background: #0a0a0f;
-  --foreground: #e4e4e7;
-  --muted: #a1a1aa;
-  --muted-foreground: #71717a;
-  --border: #2a2a38;
-  --input: #1a1a24;
-  --ring: #6366f1;
-  --card: #111118;
-  --card-foreground: #e4e4e7;
-  --popover: #111118;
-  --popover-foreground: #e4e4e7;
-  --destructive: #ef4444;
-  --success: #22c55e;
-  --warning: #eab308;
+  /* Page */
+  --th-bg:          #0a0a0f;
+  --th-fg:          #e4e4e7;
+  --th-fg-muted:    #a1a1aa;
+  --th-fg-faint:    #71717a;
+  --th-fg-heading:  #ffffff;
+
+  /* Surfaces */
+  --th-surface:     #111118;
+  --th-surface-alt: #1a1a24;
+  --th-card:        rgba(255,255,255,0.02);
+  --th-card-hover:  rgba(255,255,255,0.04);
+
+  /* Borders */
+  --th-border:       rgba(255,255,255,0.05);
+  --th-border-hover: rgba(255,255,255,0.10);
+  --th-border-input: rgba(255,255,255,0.08);
+
+  /* Header */
+  --th-header-bg:   rgba(0,0,0,0.60);
+  --th-header-fg:   #d1d5db;
+
+  /* Footer */
+  --th-footer-bg:   #0a0a0f;
+
+  /* Dropdown / Popover */
+  --th-popover-bg:  #111118;
+
+  /* Editor (JSON formatter, code areas) */
+  --th-editor-bg:    #1e1e2e;
+  --th-editor-gutter:#141422;
+  --th-editor-line:  #52525b;
+  --th-editor-caret: #d1d5db;
+
+  /* Syntax highlighting — VS Code Dark+ inspired */
+  --th-syn-key:      #9cdcfe;
+  --th-syn-string:   #ce9178;
+  --th-syn-number:   #b5cea8;
+  --th-syn-bool:     #569cd6;
+  --th-syn-null:     #569cd6;
+  --th-syn-bracket:  #ffd700;
+  --th-syn-punct:    #808080;
+
+  /* Buttons */
+  --th-btn-ghost-hover: rgba(255,255,255,0.05);
+
+  /* Badges / pills */
+  --th-pill-bg:     rgba(255,255,255,0.05);
+  --th-pill-fg:     #a1a1aa;
 }
 
 .light {
-  --background: #fafafa;
-  --foreground: #18181b;
-  --muted: #71717a;
-  --muted-foreground: #a1a1aa;
-  --border: #e4e4e7;
-  --input: #f4f4f5;
-  --ring: #6366f1;
-  --card: #ffffff;
-  --card-foreground: #18181b;
-  --popover: #ffffff;
-  --popover-foreground: #18181b;
-  --destructive: #dc2626;
-  --success: #16a34a;
-  --warning: #ca8a04;
+  /* Page */
+  --th-bg:          #f8f9fc;
+  --th-fg:          #1e293b;
+  --th-fg-muted:    #64748b;
+  --th-fg-faint:    #94a3b8;
+  --th-fg-heading:  #0f172a;
+
+  /* Surfaces */
+  --th-surface:     #ffffff;
+  --th-surface-alt: #f1f5f9;
+  --th-card:        rgba(255,255,255,0.80);
+  --th-card-hover:  rgba(255,255,255,1);
+
+  /* Borders */
+  --th-border:       rgba(15,23,42,0.08);
+  --th-border-hover: rgba(15,23,42,0.16);
+  --th-border-input: rgba(15,23,42,0.12);
+
+  /* Header */
+  --th-header-bg:   rgba(255,255,255,0.80);
+  --th-header-fg:   #475569;
+
+  /* Footer */
+  --th-footer-bg:   #f1f5f9;
+
+  /* Dropdown / Popover */
+  --th-popover-bg:  #ffffff;
+
+  /* Editor — VS Code Light+ inspired */
+  --th-editor-bg:    #ffffff;
+  --th-editor-gutter:#f8f9fc;
+  --th-editor-line:  #c4c4c4;
+  --th-editor-caret: #1e293b;
+
+  /* Syntax highlighting — VS Code Light+ */
+  --th-syn-key:      #0451a5;
+  --th-syn-string:   #a31515;
+  --th-syn-number:   #098658;
+  --th-syn-bool:     #0000ff;
+  --th-syn-null:     #0000ff;
+  --th-syn-bracket:  #0431fa;
+  --th-syn-punct:    #383838;
+
+  /* Buttons */
+  --th-btn-ghost-hover: rgba(15,23,42,0.05);
+
+  /* Badges / pills */
+  --th-pill-bg:     rgba(15,23,42,0.06);
+  --th-pill-fg:     #475569;
 }
 
-/* ------------------------------------------------
+/* ================================================
    Base
-   ------------------------------------------------ */
+   ================================================ */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--th-bg);
+  color: var(--th-fg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -143,54 +192,46 @@ body {
   min-height: 100dvh;
 }
 
-/* ------------------------------------------------
+/* ================================================
    Scrollbar
-   ------------------------------------------------ */
+   ================================================ */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #2a2a38 transparent;
+  scrollbar-color: rgba(255,255,255,0.12) transparent;
 }
 
-*::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-*::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: #2a2a38;
-  border-radius: 9999px;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-  background-color: #3a3a4a;
-}
+*::-webkit-scrollbar { width: 6px; height: 6px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background-color: rgba(255,255,255,0.12); border-radius: 9999px; }
+*::-webkit-scrollbar-thumb:hover { background-color: rgba(255,255,255,0.20); }
 
 .light *,
 .light {
-  scrollbar-color: #d4d4d8 transparent;
+  scrollbar-color: rgba(15,23,42,0.12) transparent;
 }
+.light *::-webkit-scrollbar-thumb { background-color: rgba(15,23,42,0.12); }
+.light *::-webkit-scrollbar-thumb:hover { background-color: rgba(15,23,42,0.22); }
 
-.light *::-webkit-scrollbar-thumb {
-  background-color: #d4d4d8;
-}
-
-.light *::-webkit-scrollbar-thumb:hover {
-  background-color: #a1a1aa;
-}
-
-/* ------------------------------------------------
+/* ================================================
    Selection
-   ------------------------------------------------ */
+   ================================================ */
 ::selection {
-  background-color: rgba(99, 102, 241, 0.3);
+  background-color: rgba(99, 102, 241, 0.30);
   color: #e0e7ff;
 }
 
 .light ::selection {
-  background-color: rgba(139, 92, 246, 0.25);
+  background-color: rgba(99, 102, 241, 0.18);
   color: #1e1b4b;
 }
+
+/* ================================================
+   JSON Editor — syntax highlight colors via vars
+   ================================================ */
+.json-key    { color: var(--th-syn-key);     }
+.json-string { color: var(--th-syn-string);  }
+.json-number { color: var(--th-syn-number);  }
+.json-bool   { color: var(--th-syn-bool);    }
+.json-null   { color: var(--th-syn-null); font-style: italic; }
+.json-bracket{ color: var(--th-syn-bracket); }
+.json-punct  { color: var(--th-syn-punct);   }

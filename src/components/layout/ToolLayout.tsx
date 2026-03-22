@@ -40,18 +40,18 @@ export default function ToolLayout({ tool, children }: ToolLayoutProps) {
     <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
       {/* ---- Breadcrumb ---- */}
       <nav aria-label="Breadcrumb" className="mb-6">
-        <ol className="flex items-center gap-1.5 text-sm text-gray-500">
+        <ol className="flex items-center gap-1.5 text-sm text-(--th-fg-faint)">
           <li>
             <Link
               href="/"
-              className="transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:rounded"
+              className="transition-colors duration-200 hover:text-(--th-fg-heading) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:rounded"
             >
               Home
             </Link>
           </li>
           <li aria-hidden="true">
             <svg
-              className="h-3.5 w-3.5 text-gray-600"
+              className="h-3.5 w-3.5 text-(--th-fg-faint)"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={2}
@@ -67,14 +67,14 @@ export default function ToolLayout({ tool, children }: ToolLayoutProps) {
           <li>
             <Link
               href="/#tools"
-              className="transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:rounded"
+              className="transition-colors duration-200 hover:text-(--th-fg-heading) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:rounded"
             >
               Tools
             </Link>
           </li>
           <li aria-hidden="true">
             <svg
-              className="h-3.5 w-3.5 text-gray-600"
+              className="h-3.5 w-3.5 text-(--th-fg-faint)"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={2}
@@ -88,7 +88,7 @@ export default function ToolLayout({ tool, children }: ToolLayoutProps) {
             </svg>
           </li>
           <li>
-            <span className="font-medium text-white">{tool.name}</span>
+            <span className="font-medium text-(--th-fg-heading)">{tool.name}</span>
           </li>
         </ol>
       </nav>
@@ -102,7 +102,7 @@ export default function ToolLayout({ tool, children }: ToolLayoutProps) {
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-3">
-            <h1 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+            <h1 className="text-2xl font-bold tracking-tight text-(--th-fg-heading) sm:text-3xl">
               {tool.name}
             </h1>
             <span
@@ -120,7 +120,7 @@ export default function ToolLayout({ tool, children }: ToolLayoutProps) {
               </span>
             )}
           </div>
-          <p className="mt-2 text-base leading-relaxed text-gray-400">
+          <p className="mt-2 text-base leading-relaxed text-(--th-fg-muted)">
             {tool.description}
           </p>
         </div>
@@ -141,8 +141,8 @@ export default function ToolLayout({ tool, children }: ToolLayoutProps) {
 
       {/* ---- Related Tools ---- */}
       {related.length > 0 && (
-        <section className="mt-14 border-t border-white/5 pt-10">
-          <h2 className="mb-5 text-lg font-semibold text-white">
+        <section className="mt-14 border-t border-(--th-border) pt-10">
+          <h2 className="mb-5 text-lg font-semibold text-(--th-fg-heading)">
             Related Tools
           </h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -152,17 +152,17 @@ export default function ToolLayout({ tool, children }: ToolLayoutProps) {
                 <Link
                   key={r.id}
                   href={`/tools/${r.slug}`}
-                  className="group rounded-2xl border border-white/5 bg-white/2 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-white/10 hover:bg-white/4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+                  className="group rounded-2xl border border-(--th-border) bg-(--th-card) p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-(--th-border-hover) hover:bg-(--th-card-hover) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
                 >
                   <div
                     className={`mb-3 flex h-10 w-10 items-center justify-center rounded-xl text-lg ${rc.bg}`}
                   >
                     {r.icon}
                   </div>
-                  <h3 className="font-semibold text-white transition-colors duration-200 group-hover:text-primary-400">
+                  <h3 className="font-semibold text-(--th-fg-heading) transition-colors duration-200 group-hover:text-primary-400">
                     {r.shortName}
                   </h3>
-                  <p className="mt-1 line-clamp-2 text-sm text-gray-500">
+                  <p className="mt-1 line-clamp-2 text-sm text-(--th-fg-faint)">
                     {r.description}
                   </p>
                 </Link>
@@ -173,20 +173,20 @@ export default function ToolLayout({ tool, children }: ToolLayoutProps) {
       )}
 
       {/* ---- SEO content ---- */}
-      <section className="mt-14 border-t border-white/5 pt-10">
-        <h2 className="mb-3 text-lg font-semibold text-white">
+      <section className="mt-14 border-t border-(--th-border) pt-10">
+        <h2 className="mb-3 text-lg font-semibold text-(--th-fg-heading)">
           About {tool.name}
         </h2>
-        <p className="max-w-3xl text-sm leading-relaxed text-gray-400">
+        <p className="max-w-3xl text-sm leading-relaxed text-(--th-fg-muted)">
           {tool.longDescription}
         </p>
       </section>
 
       {/* ---- Back link ---- */}
-      <div className="mt-10 border-t border-white/5 pt-8">
+      <div className="mt-10 border-t border-(--th-border) pt-8">
         <Link
           href="/#tools"
-          className="inline-flex items-center gap-2 text-sm font-medium text-gray-400 transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+          className="inline-flex items-center gap-2 text-sm font-medium text-(--th-fg-muted) transition-colors duration-200 hover:text-(--th-fg-heading) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
         >
           <svg
             className="h-4 w-4"

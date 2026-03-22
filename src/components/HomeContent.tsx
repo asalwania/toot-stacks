@@ -29,11 +29,11 @@ function ToolCard({ tool, index }: { tool: Tool; index: number }) {
   return (
     <Link
       href={`/tools/${tool.slug}`}
-      className={`group relative flex flex-col rounded-2xl border border-white/5 bg-white/2 p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-white/10 hover:bg-white/4 hover:shadow-lg hover:shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 ${c.border}`}
+      className={`group relative flex flex-col rounded-2xl border border-(--th-border) bg-(--th-card) p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-(--th-border-hover) hover:bg-(--th-card-hover) hover:shadow-lg hover:shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 ${c.border}`}
       style={{ animationDelay: `${index * 60}ms` }}
     >
       {/* Category pill */}
-      <span className="absolute right-4 top-4 rounded-full bg-white/5 px-2.5 py-1 text-[11px] font-medium capitalize text-gray-500">
+      <span className="absolute right-4 top-4 rounded-full bg-(--th-pill-bg) px-2.5 py-1 text-[11px] font-medium capitalize text-(--th-fg-faint)">
         {tool.categoryLabel}
       </span>
 
@@ -56,12 +56,12 @@ function ToolCard({ tool, index }: { tool: Tool; index: number }) {
       </div>
 
       {/* Name */}
-      <h3 className="mb-2 text-lg font-semibold text-white transition-colors duration-200 group-hover:text-primary-400">
+      <h3 className="mb-2 text-lg font-semibold text-(--th-fg-heading) transition-colors duration-200 group-hover:text-primary-400">
         {tool.name}
       </h3>
 
       {/* Description (clamp to 2 lines) */}
-      <p className="mb-5 line-clamp-2 flex-1 text-sm leading-relaxed text-gray-400">
+      <p className="mb-5 line-clamp-2 flex-1 text-sm leading-relaxed text-(--th-fg-muted)">
         {tool.description}
       </p>
 
@@ -206,7 +206,7 @@ export default function HomeContent({ faqItems }: { faqItems: FaqItem[] }) {
       {/* ============================================================ */}
       {/*  HERO                                                        */}
       {/* ============================================================ */}
-      <section className="relative overflow-hidden border-b border-white/5 px-4 pb-20 pt-24 sm:pb-28 sm:pt-32">
+      <section className="relative overflow-hidden border-b border-(--th-border) px-4 pb-20 pt-24 sm:pb-28 sm:pt-32">
         {/* Animated gradient blob — CSS only */}
         <div
           aria-hidden="true"
@@ -242,7 +242,7 @@ export default function HomeContent({ faqItems }: { faqItems: FaqItem[] }) {
               Free Developer Tools
             </span>
           </h1>
-          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-gray-400 sm:text-xl">
+          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-(--th-fg-muted) sm:text-xl">
             10 essential tools that run 100% in your browser.
             <br className="hidden sm:block" /> No uploads. No tracking. No
             signup.
@@ -253,7 +253,7 @@ export default function HomeContent({ faqItems }: { faqItems: FaqItem[] }) {
             <div className="group relative">
               {/* Search icon */}
               <svg
-                className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-500 transition-colors duration-200 group-focus-within:text-primary-400"
+                className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-(--th-fg-faint) transition-colors duration-200 group-focus-within:text-primary-400"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={2}
@@ -272,11 +272,11 @@ export default function HomeContent({ faqItems }: { faqItems: FaqItem[] }) {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search tools..."
-                className="w-full rounded-xl border border-white/10 bg-white/5 py-3.5 pl-12 pr-20 text-base text-white placeholder-gray-500 outline-none transition-all duration-200 focus:border-primary-500/50 focus:bg-white/8 focus:ring-2 focus:ring-primary-500/20"
+                className="w-full rounded-xl border border-(--th-border-hover) bg-(--th-pill-bg) py-3.5 pl-12 pr-20 text-base text-(--th-fg-heading) placeholder-(--th-fg-faint) outline-none transition-all duration-200 focus:border-primary-500/50 focus:bg-(--th-card-hover) focus:ring-2 focus:ring-primary-500/20"
               />
 
               {/* Keyboard shortcut hint */}
-              <kbd className="pointer-events-none absolute right-4 top-1/2 hidden -translate-y-1/2 select-none items-center gap-0.5 rounded-md border border-white/10 bg-white/5 px-2 py-1 font-mono text-[11px] text-gray-500 sm:inline-flex">
+              <kbd className="pointer-events-none absolute right-4 top-1/2 hidden -translate-y-1/2 select-none items-center gap-0.5 rounded-md border border-(--th-border-hover) bg-(--th-pill-bg) px-2 py-1 font-mono text-[11px] text-(--th-fg-faint) sm:inline-flex">
                 <span className="text-xs">⌘</span>K
               </kbd>
             </div>
@@ -307,7 +307,7 @@ export default function HomeContent({ faqItems }: { faqItems: FaqItem[] }) {
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-gray-300 transition-all duration-200 hover:border-white/20 hover:bg-white/8 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+              className="inline-flex items-center gap-2 rounded-xl border border-(--th-border-hover) bg-(--th-pill-bg) px-6 py-3 text-sm font-semibold text-(--th-fg) transition-all duration-200 hover:border-(--th-border-hover) hover:bg-(--th-btn-ghost-hover) hover:text-(--th-fg-heading) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
             >
               <svg
                 className="h-4 w-4"
@@ -334,12 +334,12 @@ export default function HomeContent({ faqItems }: { faqItems: FaqItem[] }) {
           {/* Section heading */}
           <div className="mb-10 flex flex-col items-center gap-3 text-center">
             <div className="flex items-center gap-3">
-              <h2 className="text-3xl font-bold text-white">All Tools</h2>
+              <h2 className="text-3xl font-bold text-(--th-fg-heading)">All Tools</h2>
               <span className="rounded-full bg-primary-500/10 px-3 py-1 text-sm font-semibold text-primary-400">
                 {tools.length}
               </span>
             </div>
-            <p className="text-gray-500">
+            <p className="text-(--th-fg-faint)">
               Pick a category or search for what you need.
             </p>
           </div>
@@ -351,7 +351,7 @@ export default function HomeContent({ faqItems }: { faqItems: FaqItem[] }) {
               className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 ${
                 activeCategory === "all"
                   ? "bg-primary-500 text-white shadow-lg shadow-primary-500/25"
-                  : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
+                  : "bg-(--th-pill-bg) text-(--th-fg-muted) hover:bg-(--th-btn-ghost-hover) hover:text-(--th-fg-heading)"
               }`}
             >
               All
@@ -363,7 +363,7 @@ export default function HomeContent({ faqItems }: { faqItems: FaqItem[] }) {
                 className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 ${
                   activeCategory === cat.category
                     ? "bg-primary-500 text-white shadow-lg shadow-primary-500/25"
-                    : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
+                    : "bg-(--th-pill-bg) text-(--th-fg-muted) hover:bg-(--th-btn-ghost-hover) hover:text-(--th-fg-heading)"
                 }`}
               >
                 {cat.label}
@@ -383,13 +383,13 @@ export default function HomeContent({ faqItems }: { faqItems: FaqItem[] }) {
           {/* Empty state */}
           {filteredTools.length === 0 && (
             <div className="py-20 text-center">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5 text-3xl">
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-(--th-pill-bg) text-3xl">
                 🔎
               </div>
-              <p className="mb-1 text-lg font-medium text-white">
+              <p className="mb-1 text-lg font-medium text-(--th-fg-heading)">
                 No tools found
               </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-(--th-fg-faint)">
                 Try a different search term or category.
               </p>
             </div>
@@ -400,20 +400,20 @@ export default function HomeContent({ faqItems }: { faqItems: FaqItem[] }) {
       {/* ============================================================ */}
       {/*  FEATURES                                                    */}
       {/* ============================================================ */}
-      <section className="border-t border-white/5 px-4 py-16 sm:py-20">
+      <section className="border-t border-(--th-border) px-4 py-16 sm:py-20">
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-3">
           {features.map((f) => (
             <div
               key={f.title}
-              className="rounded-2xl border border-white/5 bg-linear-to-b from-white/5 to-transparent p-8"
+              className="rounded-2xl border border-(--th-border) bg-linear-to-b from-(--th-pill-bg) to-transparent p-8"
             >
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-primary-500/10">
                 {f.icon}
               </div>
-              <h3 className="mb-2 text-lg font-semibold text-white">
+              <h3 className="mb-2 text-lg font-semibold text-(--th-fg-heading)">
                 {f.title}
               </h3>
-              <p className="text-sm leading-relaxed text-gray-400">
+              <p className="text-sm leading-relaxed text-(--th-fg-muted)">
                 {f.description}
               </p>
             </div>
@@ -424,9 +424,9 @@ export default function HomeContent({ faqItems }: { faqItems: FaqItem[] }) {
       {/* ============================================================ */}
       {/*  FAQ                                                         */}
       {/* ============================================================ */}
-      <section className="border-t border-white/5 px-4 py-16 sm:py-20">
+      <section className="border-t border-(--th-border) px-4 py-16 sm:py-20">
         <div className="mx-auto max-w-3xl">
-          <h2 className="mb-10 text-center text-3xl font-bold text-white">
+          <h2 className="mb-10 text-center text-3xl font-bold text-(--th-fg-heading)">
             Frequently Asked Questions
           </h2>
 
@@ -434,12 +434,12 @@ export default function HomeContent({ faqItems }: { faqItems: FaqItem[] }) {
             {faqItems.map((item, i) => (
               <details
                 key={i}
-                className="group rounded-xl border border-white/5 bg-white/2 transition-colors duration-200 open:bg-white/4 [&_summary::-webkit-details-marker]:hidden"
+                className="group rounded-xl border border-(--th-border) bg-(--th-card) transition-colors duration-200 open:bg-(--th-card-hover) [&_summary::-webkit-details-marker]:hidden"
               >
-                <summary className="flex cursor-pointer items-center justify-between px-6 py-5 text-base font-medium text-white transition-colors duration-200 hover:text-primary-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-500">
+                <summary className="flex cursor-pointer items-center justify-between px-6 py-5 text-base font-medium text-(--th-fg-heading) transition-colors duration-200 hover:text-primary-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-500">
                   {item.question}
                   <svg
-                    className="h-5 w-5 shrink-0 text-gray-500 transition-transform duration-200 group-open:rotate-45"
+                    className="h-5 w-5 shrink-0 text-(--th-fg-faint) transition-transform duration-200 group-open:rotate-45"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth={2}
@@ -452,7 +452,7 @@ export default function HomeContent({ faqItems }: { faqItems: FaqItem[] }) {
                     />
                   </svg>
                 </summary>
-                <div className="px-6 pb-5 text-sm leading-relaxed text-gray-400">
+                <div className="px-6 pb-5 text-sm leading-relaxed text-(--th-fg-muted)">
                   {item.answer}
                 </div>
               </details>
