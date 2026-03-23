@@ -19,7 +19,7 @@ export default function Footer() {
                 &lt;/&gt;
               </span>
               <span className="text-lg font-bold tracking-tight text-(--th-fg-heading)">
-                WebToolkit
+                ToolsStack
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-(--th-fg-muted)">
@@ -63,7 +63,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/asalwania/toot-stacks"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-sm text-(--th-fg-muted) transition-colors duration-200 hover:text-(--th-fg-heading) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
@@ -108,7 +108,7 @@ export default function Footer() {
         {/* ---- Bottom bar ---- */}
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-(--th-border) pt-8 sm:flex-row">
           <p className="text-xs text-(--th-fg-faint)">
-            &copy; 2026 WebToolkit. All tools process data locally in your
+            &copy; 2026 ToolsStack. All tools process data locally in your
             browser.
           </p>
           <p className="text-xs text-(--th-fg-faint)">

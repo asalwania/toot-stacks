@@ -344,7 +344,7 @@ export default function HomeContent({ faqItems }: { faqItems: FaqItem[] }) {
               </svg>
             </a>
             <a
-              href="https://github.com"
+              href="https://github.com/asalwania/toot-stacks"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl border border-(--th-border-hover) bg-(--th-pill-bg) px-6 py-3 text-sm font-semibold text-(--th-fg) transition-all duration-200 hover:border-(--th-border-hover) hover:bg-(--th-btn-ghost-hover) hover:text-(--th-fg-heading) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"

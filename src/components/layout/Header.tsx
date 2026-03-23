@@ -86,7 +86,7 @@ export default function Header() {
             className="text-lg font-bold tracking-tight"
             style={{ color: "var(--th-fg-heading)" }}
           >
-            WebToolkit
+            ToolsStack
           </span>
           <span className="rounded bg-emerald-500/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase leading-none tracking-wider text-emerald-400">
             Free
@@ -205,7 +205,7 @@ export default function Header() {
         <div className="flex items-center gap-1.5">
           {/* GitHub */}
           <a
-            href="https://github.com"
+            href="https://github.com/asalwania/toot-stacks"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -457,7 +457,7 @@ export default function Header() {
           style={{ borderTop: "1px solid var(--th-border)" }}
         >
           <a
-            href="https://github.com"
+            href="https://github.com/asalwania/toot-stacks"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors duration-200 hover:bg-(--th-pill-bg) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
