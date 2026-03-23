@@ -99,7 +99,7 @@ export default function Header() {
           <div ref={dropdownRef} className="relative">
             <button
               onClick={() => setToolsOpen((o) => !o)}
-              className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-(--th-pill-bg) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+              className="flex items-center gap-1 cursor-pointer rounded-lg px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-(--th-pill-bg) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
               style={{ color: "var(--th-header-fg)" }}
               onMouseEnter={(e) =>
                 (e.currentTarget.style.color = "var(--th-fg-heading)")

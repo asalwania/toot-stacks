@@ -4,6 +4,7 @@ import {
   useState,
   useRef,
   useCallback,
+  useEffect,
   type DragEvent,
   type ChangeEvent,
 } from "react";
@@ -103,14 +104,22 @@ export default function FileDropZone({
 
   const removeFile = useCallback(
     (index: number) => {
-      setSelectedFiles((prev) => {
-        const next = prev.filter((_, i) => i !== index);
-        onFiles(next);
-        return next;
-      });
+      setSelectedFiles((prev) => prev.filter((_, i) => i !== index));
     },
-    [onFiles]
+    []
   );
+
+  /* Notify parent after selectedFiles settles (outside render) */
+  const prevSelectedRef = useRef(selectedFiles);
+  useEffect(() => {
+    if (prevSelectedRef.current !== selectedFiles && selectedFiles !== prevSelectedRef.current) {
+      // Only fire on removals (processFiles already calls onFiles synchronously)
+      if (selectedFiles.length < prevSelectedRef.current.length) {
+        onFiles(selectedFiles);
+      }
+    }
+    prevSelectedRef.current = selectedFiles;
+  }, [selectedFiles, onFiles]);
 
   function onDragOver(e: DragEvent<HTMLDivElement>) {
     e.preventDefault();
