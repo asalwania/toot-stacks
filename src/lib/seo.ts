@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { Tool } from "./tools-registry";
 
-export const SITE_URL = "https://devtoolkit.dev";
+export const SITE_URL = "https://www.toolstacks.in";
 export const SITE_NAME = "ToolsStack";
 export const SITE_DESCRIPTION =
   "A collection of fast, free, and privacy-friendly developer tools that run entirely in your browser. Format JSON, compress images, generate passwords, build regex, and more — no sign-up required.";
