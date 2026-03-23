@@ -314,25 +314,30 @@ function JsonEditor({
 
   return (
     <div
-      className="json-editor group relative flex overflow-hidden rounded-2xl border border-[var(--th-border)]"
-      style={{ minHeight, backgroundColor: 'var(--th-editor-bg)' }}
+      className="json-editor group relative flex overflow-hidden rounded-2xl border border-[var(--th-border)] max-h-105"
+      style={{ minHeight, backgroundColor: "var(--th-editor-bg)" }}
     >
       {/* ---- Line gutter ---- */}
       <div
         ref={gutterRef}
         className="pointer-events-none select-none overflow-hidden border-r border-[var(--th-border)] py-3 font-mono text-[13px] leading-5"
-        style={{ minWidth: lineCount > 999 ? 56 : lineCount > 99 ? 48 : 40, backgroundColor: 'var(--th-editor-gutter)' }}
+        style={{
+          minWidth: lineCount > 999 ? 56 : lineCount > 99 ? 48 : 40,
+          backgroundColor: "var(--th-editor-gutter)",
+        }}
         aria-hidden="true"
       >
         {Array.from({ length: lineCount }, (_, i) => (
           <div
             key={i}
             className={`pr-3 text-right ${
-              errorLine === i + 1
-                ? "bg-red-500/15 text-red-400"
-                : ""
+              errorLine === i + 1 ? "bg-red-500/15 text-red-400" : ""
             }`}
-            style={errorLine === i + 1 ? undefined : { color: 'var(--th-editor-line)' }}
+            style={
+              errorLine === i + 1
+                ? undefined
+                : { color: "var(--th-editor-line)" }
+            }
           >
             {i + 1}
           </div>
@@ -365,7 +370,7 @@ function JsonEditor({
           autoCapitalize="off"
           autoCorrect="off"
           className="relative z-10 h-full w-full resize-none bg-transparent p-3 font-mono text-[13px] leading-5 text-transparent outline-none selection:bg-primary-500/30 selection:text-transparent"
-          style={{ minHeight, caretColor: 'var(--th-editor-caret)' }}
+          style={{ minHeight, caretColor: "var(--th-editor-caret)" }}
           placeholder={!value ? placeholder : undefined}
         />
       </div>
@@ -374,7 +379,10 @@ function JsonEditor({
       {lineCount > 30 && (
         <div
           className="absolute bottom-2 right-2 z-20 rounded px-1.5 py-0.5 font-mono text-[10px] opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-          style={{ backgroundColor: 'var(--th-pill-bg)', color: 'var(--th-fg-faint)' }}
+          style={{
+            backgroundColor: "var(--th-pill-bg)",
+            color: "var(--th-fg-faint)",
+          }}
         >
           {lineCount} lines
         </div>
@@ -420,7 +428,9 @@ function TreeNode({
 
     return (
       <div className="flex gap-1 py-px" style={{ paddingLeft: depth * 18 }}>
-        {label && <span className="text-[var(--th-syn-key)]">{label}:&nbsp;</span>}
+        {label && (
+          <span className="text-[var(--th-syn-key)]">{label}:&nbsp;</span>
+        )}
         <span className={color}>{display}</span>
       </div>
     );
@@ -464,7 +474,10 @@ function TreeNode({
               defaultOpen={depth < 2}
             />
           ))}
-          <div className="py-px text-[var(--th-syn-bracket)]" style={{ paddingLeft: 18 }}>
+          <div
+            className="py-px text-[var(--th-syn-bracket)]"
+            style={{ paddingLeft: 18 }}
+          >
             {bracket[1]}
           </div>
         </>
@@ -681,7 +694,9 @@ export default function JsonFormatter() {
           {mode === "format" && (
             <>
               <div className="flex items-center rounded-lg border border-[var(--th-border-hover)] bg-[var(--th-pill-bg)]">
-                <span className="px-2.5 text-xs text-[var(--th-fg-faint)]">Indent</span>
+                <span className="px-2.5 text-xs text-[var(--th-fg-faint)]">
+                  Indent
+                </span>
                 {([2, 4] as const).map((n) => (
                   <button
                     key={n}
@@ -815,20 +830,22 @@ export default function JsonFormatter() {
         </div>
 
         {/* Right: Output / Tree */}
-        <div className="flex flex-col">
+        <div className="flex flex-col relative">
           <div className="mb-2 flex items-center justify-between">
             <span className="text-xs font-medium uppercase tracking-wider text-[var(--th-fg-faint)]">
               {mode === "tree" ? "Tree View" : "Output"}
             </span>
             {output && mode !== "tree" && (
-              <CopyButton text={output} label="Copy" />
+              <div className="absolute -top-4 right-0">
+                <CopyButton text={output} label="Copy" />
+              </div>
             )}
           </div>
 
           {mode === "tree" ? (
             <div
               className="flex-1 overflow-auto rounded-2xl border border-[var(--th-border)] p-4 font-mono text-[13px] leading-5"
-              style={{ minHeight: 420, backgroundColor: 'var(--th-editor-bg)' }}
+              style={{ minHeight: 420, backgroundColor: "var(--th-editor-bg)" }}
             >
               {!input.trim() && (
                 <div className="flex h-full items-center justify-center">
@@ -855,12 +872,15 @@ export default function JsonFormatter() {
               ) : (
                 <div
                   className="flex flex-1 items-center justify-center rounded-2xl border border-[var(--th-border)] p-6"
-                  style={{ minHeight: 420, backgroundColor: 'var(--th-editor-bg)' }}
+                  style={{
+                    minHeight: 420,
+                    backgroundColor: "var(--th-editor-bg)",
+                  }}
                 >
                   <div className="text-center">
                     <div
                       className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl font-mono text-lg text-[var(--th-fg-faint)]"
-                      style={{ backgroundColor: 'var(--th-pill-bg)' }}
+                      style={{ backgroundColor: "var(--th-pill-bg)" }}
                     >
                       {"{ }"}
                     </div>
