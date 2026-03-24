@@ -222,6 +222,32 @@ export const tools: Tool[] = [
     isNew: true,
   },
   {
+    id: "markdown-editor",
+    slug: "markdown-editor",
+    name: "Markdown Editor & Previewer",
+    shortName: "Markdown Editor",
+    description:
+      "Write Markdown with a live, side-by-side rendered preview.",
+    longDescription:
+      "Write and preview Markdown in real time with a split-pane editor featuring syntax highlighting, a rich toolbar for headings, bold, italic, links, images, code blocks, tables, and more. Instantly see the rendered output side-by-side, toggle between edit, preview, and split views, and export to HTML or copy raw Markdown. 100% client-side — your content never leaves the browser.",
+    icon: "📝",
+    category: "text",
+    categoryLabel: "Text Tools",
+    keywords: [
+      "markdown",
+      "editor",
+      "preview",
+      "markdown viewer",
+      "markdown to html",
+      "wysiwyg",
+      "markdown live preview",
+      "markdown formatter",
+      "github markdown",
+    ],
+    color: "indigo",
+    isNew: true,
+  },
+  {
     id: "regex-tester",
     slug: "regex-tester",
     name: "Regex Tester & Explainer",
