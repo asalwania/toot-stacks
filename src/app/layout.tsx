@@ -40,6 +40,9 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} - Free Online Web Tools`,
     description: SITE_DESCRIPTION,
   },
+  icons: {
+    icon: "/logo.svg",
+  },
   robots: {
     index: true,
     follow: true,

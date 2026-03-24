@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { tools } from "@/lib/tools-registry";
 
@@ -79,9 +80,13 @@ export default function Header() {
           href="/"
           className="group flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black/60"
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-linear-to-br from-primary-500 to-accent-500 font-mono text-xs font-bold text-white transition-shadow duration-200 group-hover:shadow-lg group-hover:shadow-primary-500/25">
-            &lt;/&gt;
-          </span>
+          <Image
+            src="/logo.svg"
+            alt="ToolsStack Logo"
+            width={32}
+            height={32}
+            className="rounded-lg transition-shadow duration-200 group-hover:shadow-lg group-hover:shadow-primary-500/25"
+          />
           <span
             className="text-lg font-bold tracking-tight"
             style={{ color: "var(--th-fg-heading)" }}
