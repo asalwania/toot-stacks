@@ -96,7 +96,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="min-h-screen font-sans antialiased"
+        className="min-h-screen overflow-x-hidden font-sans antialiased"
         style={{ backgroundColor: "var(--th-bg)", color: "var(--th-fg)" }}
       >
         <div className="relative flex min-h-screen flex-col">

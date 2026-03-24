@@ -391,7 +391,7 @@ ${renderedHtml}
   return (
     <div className="flex flex-col gap-4">
       {/* ---- Top bar: view toggle + actions ---- */}
-      <div className="flex flex-wrap items-center justify-between gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
         {/* View mode tabs */}
         <div
           className="flex rounded-xl p-1"
@@ -401,7 +401,7 @@ ${renderedHtml}
             <button
               key={mode}
               onClick={() => setViewMode(mode)}
-              className={`cursor-pointer rounded-lg px-4 py-1.5 text-sm font-medium capitalize transition-all duration-200 ${
+              className={`flex-1 cursor-pointer rounded-lg px-4 py-1.5 text-sm font-medium capitalize transition-all duration-200 sm:flex-none ${
                 viewMode === mode
                   ? "bg-primary-500 text-white shadow-md shadow-primary-500/25"
                   : "text-(--th-fg-muted) hover:text-(--th-fg-heading)"
@@ -416,7 +416,7 @@ ${renderedHtml}
         <div className="flex items-center gap-2">
           <button
             onClick={copyMarkdown}
-            className="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-medium transition-colors duration-200 hover:bg-(--th-pill-bg)"
+            className="cursor-pointer rounded-lg px-3 py-1.5 text-xs sm:text-sm font-medium transition-colors duration-200 hover:bg-(--th-pill-bg)"
             style={{ color: "var(--th-fg-muted)" }}
             title="Copy Markdown"
           >
@@ -424,7 +424,7 @@ ${renderedHtml}
           </button>
           <button
             onClick={copyHtml}
-            className="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-medium transition-colors duration-200 hover:bg-(--th-pill-bg)"
+            className="cursor-pointer rounded-lg px-3 py-1.5 text-xs sm:text-sm font-medium transition-colors duration-200 hover:bg-(--th-pill-bg)"
             style={{ color: "var(--th-fg-muted)" }}
             title="Copy HTML"
           >
@@ -432,7 +432,7 @@ ${renderedHtml}
           </button>
           <button
             onClick={downloadHtml}
-            className="cursor-pointer rounded-lg bg-primary-500/10 px-3 py-1.5 text-sm font-medium text-primary-400 transition-colors duration-200 hover:bg-primary-500/20"
+            className="cursor-pointer rounded-lg bg-primary-500/10 px-3 py-1.5 text-xs sm:text-sm font-medium text-primary-400 transition-colors duration-200 hover:bg-primary-500/20"
             title="Download as HTML file"
           >
             Export HTML
@@ -443,16 +443,16 @@ ${renderedHtml}
       {/* ---- Toolbar ---- */}
       {showEditor && (
         <div
-          className="flex flex-wrap items-center gap-1 rounded-xl border border-(--th-border) px-2 py-1.5"
+          className="flex items-center gap-1 overflow-x-auto rounded-xl border border-(--th-border) px-2 py-1.5 sm:flex-wrap sm:overflow-x-visible"
           style={{ backgroundColor: "var(--th-card)" }}
         >
           {toolbarActions.map((action, i) => (
             <button
               key={action.label}
               onClick={() => handleToolbarAction(action.action)}
-              className={`cursor-pointer rounded-lg px-2.5 py-1.5 text-sm font-medium transition-all duration-200 hover:bg-(--th-pill-bg) hover:text-(--th-fg-heading) ${
+              className={`shrink-0 cursor-pointer rounded-lg px-2 py-1.5 text-sm font-medium transition-all duration-200 hover:bg-(--th-pill-bg) hover:text-(--th-fg-heading) sm:px-2.5 ${
                 i === 3 || i === 4 || i === 7 || i === 10 || i === 12
-                  ? "ml-1 border-l border-(--th-border) pl-3"
+                  ? "sm:ml-1 sm:border-l sm:border-(--th-border) sm:pl-3"
                   : ""
               }`}
               style={{ color: "var(--th-fg-muted)" }}
@@ -487,7 +487,7 @@ ${renderedHtml}
             ? "grid-cols-1 lg:grid-cols-2"
             : "grid-cols-1"
         }`}
-        style={{ minHeight: 520 }}
+        style={{ minHeight: "min(520px, 70vh)" }}
       >
         {/* Editor pane */}
         {showEditor && (

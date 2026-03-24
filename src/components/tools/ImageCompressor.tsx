@@ -524,7 +524,7 @@ export default function ImageCompressor() {
 
       {/* Thumbnail grid of uploaded images */}
       {images.length > 0 && images.some((e) => e.status === "pending") && (
-        <div className="grid grid-cols-4 gap-3 sm:grid-cols-6 md:grid-cols-8">
+        <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
           {images
             .filter((e) => e.status === "pending")
             .map((entry) => (
@@ -645,7 +645,7 @@ export default function ImageCompressor() {
 
       {/* Summary stats bar */}
       {doneImages.length > 0 && (
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-4">
           <div className="rounded-2xl border border-white/5 bg-white/2 p-4 text-center">
             <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-500">
               Original
@@ -716,7 +716,7 @@ export default function ImageCompressor() {
                       <div className="mx-auto mb-3 h-8 w-8 animate-spin rounded-full border-2 border-primary-500 border-t-transparent" />
                       <p className="text-sm text-gray-400">Compressing…</p>
                       {/* Progress bar */}
-                      <div className="mx-auto mt-3 h-1.5 w-40 overflow-hidden rounded-full bg-white/10">
+                      <div className="mx-auto mt-3 h-1.5 w-32 sm:w-40 overflow-hidden rounded-full bg-white/10">
                         <div
                           className="h-full rounded-full bg-primary-500 transition-all duration-500"
                           style={{ width: `${entry.progress}%` }}

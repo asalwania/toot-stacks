@@ -239,7 +239,7 @@ export default function PasswordGenerator() {
         </div>
 
         {/* Character types */}
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <Checkbox
             label="Uppercase (A-Z)"
             checked={useUppercase}

@@ -128,7 +128,7 @@ export default function WordCounter() {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
         {[
           { label: "Characters", value: stats.characters.toLocaleString() },
           { label: "Chars (no spaces)", value: stats.charactersNoSpaces.toLocaleString() },
@@ -210,7 +210,7 @@ export default function WordCounter() {
         {stats.charDensity.length === 0 ? (
           <p className="text-sm text-zinc-400">No characters yet</p>
         ) : (
-          <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-9 lg:grid-cols-13 gap-2">
+          <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-9 lg:grid-cols-13 gap-2">
             {stats.charDensity.map(({ char, count, percentage }) => (
               <div
                 key={char}

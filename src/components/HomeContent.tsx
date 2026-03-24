@@ -246,11 +246,11 @@ export default function HomeContent({ faqItems }: { faqItems: FaqItem[] }) {
       {/* ============================================================ */}
       {/*  HERO                                                        */}
       {/* ============================================================ */}
-      <section className="relative overflow-hidden border-b border-(--th-border) px-4 pb-20 pt-24 sm:pb-28 sm:pt-32">
+      <section className="relative overflow-x-hidden border-b border-(--th-border) px-4 pb-20 pt-24 sm:pb-28 sm:pt-32">
         {/* Animated gradient blob — CSS only */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[600px] w-[900px] -translate-x-1/2 rounded-full opacity-20 blur-3xl"
+          className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-100 w-[min(900px,200vw)] -translate-x-1/2 rounded-full opacity-20 blur-3xl sm:h-150"
           style={{
             background:
               "radial-gradient(ellipse at center, #6366f1 0%, #8b5cf6 40%, transparent 70%)",

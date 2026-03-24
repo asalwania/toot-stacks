@@ -67,6 +67,7 @@ export default function Header() {
   }, [mobileOpen]);
 
   return (
+    <>
     <header
       className="sticky top-0 z-50 w-full backdrop-blur-xl"
       style={{
@@ -328,11 +329,12 @@ export default function Header() {
           </button>
         </div>
       </nav>
+    </header>
 
       {/* ---- Mobile slide-in menu ---- */}
       {/* Backdrop */}
       <div
-        className={`fixed inset-0 z-40 bg-black/50 backdrop-blur-sm transition-opacity duration-200 md:hidden ${
+        className={`fixed inset-0 z-9998 bg-black/50 backdrop-blur-sm transition-opacity duration-200 md:hidden ${
           mobileOpen
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"
@@ -344,7 +346,7 @@ export default function Header() {
       {/* Panel */}
       <div
         ref={mobileRef}
-        className={`fixed right-0 top-0 z-50 flex h-full w-72 flex-col transition-transform duration-200 ease-out md:hidden ${
+        className={`fixed right-0 top-0 z-9999 flex h-full w-72 flex-col shadow-2xl transition-transform duration-200 ease-out md:hidden ${
           mobileOpen ? "translate-x-0" : "translate-x-full"
         }`}
         style={{
@@ -490,6 +492,6 @@ export default function Header() {
           </a>
         </div>
       </div>
-    </header>
+    </>
   );
 }
