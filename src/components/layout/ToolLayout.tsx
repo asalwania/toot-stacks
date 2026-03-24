@@ -18,6 +18,8 @@ const colorMap: Record<string, { bg: string; text: string }> = {
   amber:   { bg: "bg-amber-500/10",   text: "text-amber-400" },
   cyan:    { bg: "bg-cyan-500/10",    text: "text-cyan-400" },
   lime:    { bg: "bg-lime-500/10",    text: "text-lime-400" },
+  rose:    { bg: "bg-rose-500/10",    text: "text-rose-400" },
+  indigo:  { bg: "bg-indigo-500/10",  text: "text-indigo-400" },
 };
 
 function getRelatedTools(tool: Tool, count = 3): Tool[] {

@@ -270,6 +270,32 @@ export const tools: Tool[] = [
     ],
     color: "lime",
   },
+  {
+    id: "youtube-transcript-generator",
+    slug: "youtube-transcript-generator",
+    name: "YouTube Transcript Generator",
+    shortName: "YT Transcript",
+    description:
+      "Extract and download YouTube video transcripts instantly.",
+    longDescription:
+      "Extract, search, and download YouTube video transcripts in seconds. Paste any YouTube URL to fetch captions with timestamps, search inside the transcript, copy to clipboard, or download as a .txt file. Toggle timestamps on or off, view word counts, and get clean, readable text — all for free with no sign-up required.",
+    icon: "▶",
+    category: "media",
+    categoryLabel: "Media Tools",
+    keywords: [
+      "youtube transcript",
+      "youtube captions",
+      "video transcript",
+      "youtube subtitles",
+      "extract transcript",
+      "download transcript",
+      "youtube to text",
+      "video captions",
+      "speech to text",
+    ],
+    color: "rose",
+    isNew: true,
+  },
 ];
 
 export function getToolBySlug(slug: string): Tool | undefined {
