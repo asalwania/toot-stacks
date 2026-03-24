@@ -4,7 +4,8 @@ import Script from "next/script";
 import "@/styles/globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/seo";
+import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, GID } from "@/lib/seo";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -95,7 +96,10 @@ export default function RootLayout({
       >
         <div className="relative flex min-h-screen flex-col">
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1">
+            {children}
+            <GoogleAnalytics gaId={GID} />
+          </main>
           <Footer />
         </div>
         <Script
